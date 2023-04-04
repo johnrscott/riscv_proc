@@ -1,8 +1,8 @@
+/// A simple counter
 module counter (input up_down,
 		clock
 		resetn, 
 		output reg [2:0] out);
-   
    always @(posedge clock)
       if (!resetn)
 	 out <= 0;
@@ -12,6 +12,5 @@ module counter (input up_down,
 	 else
 	   out <= out - 1;
       end
-
 endmodule
 
