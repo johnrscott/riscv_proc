@@ -1,2 +1,8 @@
 *~
 /.hdl_checker/
+
+# Vivado project mode
+*.cache
+*.hw
+*.ip_user_files
+*.sim
