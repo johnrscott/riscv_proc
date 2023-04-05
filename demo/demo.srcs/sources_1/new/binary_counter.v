@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/05/2023 08:40:50 PM
+// Create Date: 04/05/2023 09:32:02 PM
 // Design Name: 
-// Module Name: demo
+// Module Name: binary_counter
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,9 +19,12 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module demo(
+
+module binary_counter(
     input button_input,
-    output led_output
+    output reg[3:0] led_output
     );
-    assign led_output = button_input;
+    always @(posedge button_input) begin
+        led_output <= led_output + 1;
+    end
 endmodule

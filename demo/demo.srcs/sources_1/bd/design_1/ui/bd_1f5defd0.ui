@@ -1,18 +1,18 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-812,-374",
+   "Default View_TopLeft":"-717,-360",
    "ExpandedHierarchyInLayout":"",
    "PinnedPorts":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_button_in -pg 1 -lvl 0 -x -60 -y 60 -defaultsOSRD
-preplace port port-id_led_output -pg 1 -lvl 2 -x 260 -y 60 -defaultsOSRD
-preplace inst demo_0 -pg 1 -lvl 1 -x 100 -y 60 -defaultsOSRD
+preplace port port-id_button_in -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace portBus led_output -pg 1 -lvl 2 -x 340 -y 60 -defaultsOSRD
+preplace inst binary_counter_0 -pg 1 -lvl 1 -x 170 -y 60 -defaultsOSRD
 preplace netloc button_in_1 1 0 1 N 60
-preplace netloc demo_0_out 1 1 1 N 60
-levelinfo -pg 1 -60 100 260
-pagesize -pg 1 -db -bbox -sgen -180 0 390 120
+preplace netloc binary_counter_0_led_output 1 1 1 N 60
+levelinfo -pg 1 0 170 340
+pagesize -pg 1 -db -bbox -sgen -120 0 500 120
 "
 }
 0

@@ -28,8 +28,21 @@ endmodule
 
 Click `Create Block Design`. Create two new ports (right click, `Create Port`) and call them `button_in` and `led_out` (set to type `data`). Right click the block design and create an HDL wrapper. Then drag and drop the demo module onto the block design and connect it to the input and output ports.
 
-Click `Open Elaborated Design`. The schematic will show the `demo` RTL in the block design replaced with a single wire joining the output to the input. Open `I/O planning` and connect `button_in` to port D9 (`BTN0` on the board) and `led_out` to H5 (`LD4` on the board). Pick the default `LVCMOS18` I/O type for both pins. Save the changes to a new constraints file (call it `constraints`).
+Click `Open Elaborated Design`. The schematic will show the `demo` TL in the block design replaced with a single wire joining the output to the input. Open `I/O planning` and connect `button_in` to port D9 (`BTN0` on the board) and `led_out` to H5 (`LD4` on the board). Pick the default `LVCMOS18` I/O type for both pins. Save the changes to a new constraints file (call it `constraints`).
 
 Click `Open Synthesized Design`. The synthesized design contains buffers for the input and output in addition to the wire. Click `Open Implemented Design`. The implementation will lay out the circuit on the FPGA and compute timing analysis. Click `Generate Bitstream`, and use the `Hardware Manager` to program the device. When programming, if the bitstream is not detected automatically, locate it in the `demo.runs/impl_1` folder. 
 
+For another simple example, the following module will will count up over 4-bits at the rising edge of the button (a button press):
 
+```verilog
+module binary_counter(
+    input button_input,
+    output reg[3:0] led_output
+    );
+    always @(posedge button_input) begin
+        led_output <= led_output + 1;
+    end
+endmodule
+```
+
+In the block design, replace the single LED output port with a vector port of width four. Map the connections (least-significant-bit first) to H5, J5, T9, T10 in the synthesized design, and then implement and run. Even with no button de-bouncing, the result is reasonably robust.

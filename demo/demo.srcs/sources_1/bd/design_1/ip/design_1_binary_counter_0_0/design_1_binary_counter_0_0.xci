@@ -1,14 +1,14 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "design_1_demo_0_0",
-    "cell_name": "demo_0",
-    "component_reference": "xilinx.com:module_ref:demo:1.0",
+    "xci_name": "design_1_binary_counter_0_0",
+    "cell_name": "binary_counter_0",
+    "component_reference": "xilinx.com:module_ref:binary_counter:1.0",
     "ip_revision": "1",
-    "gen_directory": "../../../../../../demo.gen/sources_1/bd/design_1/ip/design_1_demo_0_0",
+    "gen_directory": "../../../../../../demo.gen/sources_1/bd/design_1/ip/design_1_binary_counter_0_0",
     "parameters": {
       "component_parameters": {
-        "Component_Name": [ { "value": "design_1_demo_0_0", "resolve_type": "user", "usage": "all" } ]
+        "Component_Name": [ { "value": "design_1_binary_counter_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "artix7" } ],
@@ -29,7 +29,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "1" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../demo.gen/sources_1/bd/design_1/ip/design_1_demo_0_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../demo.gen/sources_1/bd/design_1/ip/design_1_binary_counter_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2022.2" } ],
@@ -39,7 +39,7 @@
     "boundary": {
       "ports": {
         "button_input": [ { "direction": "in" } ],
-        "led_output": [ { "direction": "out" } ]
+        "led_output": [ { "direction": "out", "size_left": "3", "size_right": "0" } ]
       }
     }
   }

@@ -1,78 +1,63 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x11B3901211B39012",
+      "boundary_crc": "0xBBBE636BBBBE636B",
       "device": "xc7a35ticsg324-1L",
       "gen_directory": "../../../../demo.gen/sources_1/bd/design_1",
       "name": "design_1",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2022.2",
-      "validated": "true"
+      "tool_version": "2022.2"
     },
     "design_tree": {
-      "demo_0": ""
+      "binary_counter_0": ""
     },
     "ports": {
       "button_in": {
         "type": "data",
-        "direction": "I",
-        "parameters": {
-          "LAYERED_METADATA": {
-            "value": "undef",
-            "value_src": "default"
-          }
-        }
+        "direction": "I"
       },
       "led_output": {
         "type": "data",
         "direction": "O",
-        "parameters": {
-          "LAYERED_METADATA": {
-            "value": "undef",
-            "value_src": "default"
-          }
-        }
+        "left": "3",
+        "right": "0"
       }
     },
     "components": {
-      "demo_0": {
-        "vlnv": "xilinx.com:module_ref:demo:1.0",
-        "xci_name": "design_1_demo_0_0",
-        "xci_path": "ip/design_1_demo_0_0/design_1_demo_0_0.xci",
-        "inst_hier_path": "demo_0",
+      "binary_counter_0": {
+        "vlnv": "xilinx.com:module_ref:binary_counter:1.0",
+        "xci_name": "design_1_binary_counter_0_0",
+        "xci_path": "ip/design_1_binary_counter_0_0/design_1_binary_counter_0_0.xci",
+        "inst_hier_path": "binary_counter_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "demo",
+          "ref_name": "binary_counter",
           "boundary_crc": "0x0"
         },
         "ports": {
           "button_input": {
-            "direction": "I",
-            "parameters": {
-              "LAYERED_METADATA": {
-                "value": "undef",
-                "value_src": "default_prop"
-              }
-            }
+            "direction": "I"
           },
           "led_output": {
-            "direction": "O"
+            "direction": "O",
+            "left": "3",
+            "right": "0"
           }
         }
       }
     },
     "nets": {
+      "binary_counter_0_led_output": {
+        "ports": [
+          "binary_counter_0/led_output",
+          "led_output"
+        ]
+      },
       "button_in_1": {
         "ports": [
           "button_in",
-          "demo_0/button_input"
-        ]
-      },
-      "demo_0_out": {
-        "ports": [
-          "demo_0/led_output",
-          "led_output"
+          "binary_counter_0/button_input"
         ]
       }
     }
