@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/05/2023 08:05:27 PM
+// Create Date: 04/05/2023 08:40:50 PM
 // Design Name: 
-// Module Name: counter
+// Module Name: demo
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,12 +19,9 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module counter(
-    input clock,
-    output [3:0] data
+module demo(
+    input button_input,
+    output led_output
     );
-    
-    assign data[0] = clock;
-    
+    assign led_output = button_input;
 endmodule

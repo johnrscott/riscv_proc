@@ -3,6 +3,9 @@
 
 # Vivado project mode
 *.cache
+*.gen
 *.hw
+*.ioplanning
 *.ip_user_files
 *.sim
+*.runs
