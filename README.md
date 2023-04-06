@@ -46,3 +46,7 @@ endmodule
 ```
 
 In the block design, replace the single LED output port with a vector port of width four. Map the connections (least-significant-bit first) to H5, J5, T9, T10 in the synthesized design, and then implement and run. Even with no button de-bouncing, the result is reasonably robust.
+
+## Non-project Mode Notes
+
+To add `vivado` and other design tools to the PATH, source `/tools/Xilinx/Vivado/2022.2/settings64.sh` (run `. settings.sh`).

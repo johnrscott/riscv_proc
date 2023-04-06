@@ -9,3 +9,7 @@
 *.ip_user_files
 *.sim
 *.runs
+
+# Non-project mode files
+*.jou
+*.log

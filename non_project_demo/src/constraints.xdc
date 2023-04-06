@@ -1,0 +1,11 @@
+set_property PACKAGE_PIN D9 [get_ports button_in]
+set_property IOSTANDARD LVCMOS18 [get_ports button_in]
+set_property IOSTANDARD LVCMOS18 [get_ports {led_output[3]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {led_output[2]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {led_output[1]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {led_output[0]}]
+
+set_property PACKAGE_PIN H5 [get_ports {led_output[0]}]
+set_property PACKAGE_PIN J5 [get_ports {led_output[1]}]
+set_property PACKAGE_PIN T9 [get_ports {led_output[2]}]
+set_property PACKAGE_PIN T10 [get_ports {led_output[3]}]
