@@ -13,3 +13,5 @@
 # Non-project mode files
 *.jou
 *.log
+output
+.Xil
