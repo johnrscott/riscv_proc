@@ -52,3 +52,7 @@ In the block design, replace the single LED output port with a vector port of wi
 To add `vivado` and other design tools to the PATH, source `/tools/Xilinx/Vivado/2022.2/settings64.sh` (run `. settings.sh`). To open a Vivado prompt for Tcl commands, run `vivado -mode tcl`.
 
 At any time, you can run `start_gui` to open the Vivado GUI with the current state of the system (e.g. after synthesis). Run `stop_gui` in the GUI Tcl console to go back to the `Vivado%` prompt. Do not click the red x; that will close the program (including the `Vivado%` prompt), losing the state of the in-memory project.
+
+### Synthesis
+
+After running the synthesis command, you can run `start_gui` and press F4 to view the schematic of the top level module. Run `stop_gui` to exit back to the console.
