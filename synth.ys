@@ -1,4 +1,5 @@
+read -sv src/adder_2bit.v
 read -sv src/full_adder.v
-hierarchy -top full_adder
+hierarchy -top adder_2bit
 proc; opt; techmap; opt
 write_json output/synth.json
