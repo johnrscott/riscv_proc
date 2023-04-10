@@ -1,0 +1,4 @@
+read -sv src/example_logic.v
+hierarchy -top example_logic
+proc; opt; techmap; opt
+write_verilog output/synth.v
