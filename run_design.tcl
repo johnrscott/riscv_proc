@@ -12,7 +12,7 @@ file mkdir $output_dir
 read_verilog [ glob ./src/*.v ]
 read_xdc ./src/constraints.xdc
 
-synth_design -top example_logic -part xc7a35ticsg324-1L
+synth_design -top alu_1bit -part xc7a35ticsg324-1L
 
 write_checkpoint -force $output_dir/post_synth
 report_timing_summary -file $output_dir/post_synth_timing_summary.rpt

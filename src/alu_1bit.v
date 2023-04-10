@@ -12,7 +12,7 @@ module alu_1bit (alu_ctrl, a, b, alu_out, zero);
 	2: alu_out <= a + b;
 	6: alu_out <= a - b;
 	7: alu_out <= ~(a | b);
-	default: alu_oout <= 0;
+	default: alu_out <= 0;
       endcase
    end
 endmodule
