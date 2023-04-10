@@ -12,7 +12,7 @@ module adder_2bit(a, b, alu_out, carry_out);
 
 `ifdef FORMAL
    always @(*) begin
-      output_is_unsigned_addition: assert(alu_out == a + b);
+      output_is_unsigned_addition: assert(alu_out == (a + b));
       carry_out_asserted: assert(carry_out == 0);
    end
 `endif  
