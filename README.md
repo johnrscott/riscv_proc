@@ -81,3 +81,17 @@ cd verify-example
 # Run the formal verification
 sby -f fifo.sby
 ```
+
+The verification should complete successfully. To see what happens when a test fails, you can run the following instead:
+
+```bash
+sby -f fifo.sby nofullskip
+```
+
+This will produce a counterexample wave, which can be viewed using:
+
+```bash
+gtkwave 
+```
+
+
