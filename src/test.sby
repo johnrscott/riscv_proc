@@ -9,7 +9,9 @@ smtbmc boolector
 
 [script]
 read -formal full_adder.v
-prep -top full_adder
+read -formal adder_2bit.v
+prep -top adder_2bit
 
 [files]
 full_adder.v
+adder_2bit.v
