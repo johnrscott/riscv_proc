@@ -56,3 +56,28 @@ At any time, you can run `start_gui` to open the Vivado GUI with the current sta
 ### Synthesis
 
 After running the synthesis command, you can run `start_gui` and press F4 to view the schematic of the top level module. Run `stop_gui` to exit back to the console.
+
+## Installing SymbiYosys (formal verification)
+
+[OSS CAD Suite](https://github.com/YosysHQ/oss-cad-suite-build) is a set of open source tools for digital logic design, including tools for formal verification.
+
+To install, download the latest release from the [releases page](https://github.com/YosysHQ/oss-cad-suite-build/releases), and 
+
+```bash
+cd /opt/
+# Replace with the latest release 
+sudo wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-04-10/oss-cad-suite-linux-x64-20230410.tgz
+tar xvf oss-cad-suite-linux-x64-20230410.tgz 
+```
+
+You need to add the binary tools to the path. A simple way to do this is to source `oss-cad-suite/environment` in whatever script you are using to source Vivado (see `settings.sh`). This will give you a prefix `(OSS CAD Suite)` before the prompt to let you know you have everything available.
+
+The documentation for SymbiYosys is located [here](https://yosyshq.readthedocs.io/projects/sby/en/latest/install.html). The getting started example is copied into the `verify-example` folder (an implementation of a FIFO buffer). To run the example, follow these steps:
+
+```bash
+# Source the tools
+. settings.sh
+cd verify-example
+# Run the formal verification
+sby -f fifo.sby
+```
