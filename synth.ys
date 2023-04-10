@@ -1,4 +1,4 @@
-read -sv src/alu_1bit.v
-hierarchy -top alu_1bit
+read -sv src/full_adder.v
+hierarchy -top full_adder
 proc; opt; techmap; opt
 write_json output/synth.json
