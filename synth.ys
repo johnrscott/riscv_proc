@@ -1,6 +1,6 @@
-read -sv src/adder_2bit.v
+read -sv src/ripple_carry_adder.v
 read -sv src/full_adder.v
-hierarchy -top adder_2bit
-#prep -top adder_2bit -flatten
+hierarchy -top ripple_carry_adder
+#prep -top ripple_carry_adder -flatten
 proc; opt; techmap; opt
 write_json output/synth.json
