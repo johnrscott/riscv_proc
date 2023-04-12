@@ -15,7 +15,7 @@ module ripple_carry_adder(sum, a, b, carry_out);
 `ifdef FORMAL
    always @(*) begin
       output_is_unsigned_addition: assert final(sum == (a + b));
-      carry_out_asserted: assert final(carry_out == 0);
+      carry_out_asserted: assert final(carry_out == (5'(a) + 5'(b) > 4'b1111));
    end
 `endif  
 endmodule
