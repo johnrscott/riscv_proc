@@ -8,13 +8,11 @@ module full_adder(sum, carry_out, a, b, carry_in);
 
 `ifdef FORMAL
    always @(*) begin
-      assume(carry_in == 0);
-      carry_out_when_a_and_b: assert(carry_out == (a & b));
-      sum_when_a_or_b: assert(sum == (a ^ b));
-   end
+      if (carry_in == 0) begin
+	 carry_out_when_a_and_b: assert(carry_out == (a & b));
+	 sum_when_a_or_b: assert(sum == (a ^ b));
+      end
 
-   // There is something wrong here -- commenting out the assume line does nothing
-   always @(*) begin
       if (a == 0) begin 
 	 carry_out_when_b_and_carry_in: assert final(carry_out == (b & carry_in));
 	 sum_when_b_or_carry_in: assert final(sum == (b ^ carry_in));
