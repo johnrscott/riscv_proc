@@ -1,5 +1,5 @@
-. /tools/Xilinx/Vivado/2022.2/settings64.sh
-. /opt/oss-cad-suite/environment
+. $HOME/tools/Xilinx/Vivado/2023.1/settings64.sh
+. $HOME/opt/oss-cad-suite/environment
 
 # This will redirect all Vivado log output to
 # a folder called vivado_tmp located next to
