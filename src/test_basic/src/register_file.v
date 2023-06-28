@@ -36,7 +36,7 @@ module register_file(clk, resetn, ctrl_reg_num, ctrl_write, data_in, data_out);
    	 
 `ifdef FORMAL
    property x0_is_zero;
-   
+
 endproperty
    x0_is_zero: cover property (x0_is_zero);
 `endif

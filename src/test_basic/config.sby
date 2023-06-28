@@ -1,0 +1,18 @@
+[options]
+mode bmc
+
+[engines]
+smtbmc boolector
+
+[script]
+read -sv -formal full_adder.v
+read -sv -formal ripple_carry_adder.v
+read -sv -formal register_file.v
+read -sv -formal processor.v
+prep -top processor
+
+[files]
+full_adder.v
+ripple_carry_adder.v
+register_file.v
+processor.v
