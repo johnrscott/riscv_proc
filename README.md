@@ -5,11 +5,12 @@
 Download the installer for the latest version, mark it as executable, and run it:
 
 ```bash
-chmod u+x Xilinx_Unified_2022.2_1014_8888_Lin64.bin
-./Xilinx_Unified_2022.2_1014_8888_Lin64.bin
+sudo apt install libncurses5 libncurses5-dev libncursesw5-dev libtinfo5
+chmod u+x Xilinx_Unified_2023.1_0507_1903_Lin64.bin
+./Xilinx_Unified_2023.1_0507_1903_Lin64.bin
 ```
 
-Ignore the warning about unsupported OS if you get it (tested on Linux Mint 20.1 Cinnamon). Put in your login details, and progress to install Vivado. Choose to install Vivado ML Standard. Choose the devices you want to install (at least Artix-7), and progress to choose an install location. By installing less devices, the download size and disk space requirement will be minimised. Pick `/tools/Xilinx` and begin the download/install.
+Ignore the warning about unsupported OS if you get it (tested on Linux Mint 20.1 Cinnamon). Put in your login details, and progress to install Vivado. Choose to install Vivado ML Standard. Choose the devices you want to install (at least Artix-7), and progress to choose an install location. By installing less devices, the download size and disk space requirement will be minimised. Pick `$HOME/tools/Xilinx` and begin the download/install.
 
 ## Project Mode Notes
 
@@ -64,10 +65,10 @@ After running the synthesis command, you can run `start_gui` and press F4 to vie
 To install, download the latest release from the [releases page](https://github.com/YosysHQ/oss-cad-suite-build/releases), and 
 
 ```bash
-cd /opt/
+mkdir -p $HOME/opt/ && cd $HOME/opt
 # Replace with the latest release 
-sudo wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-04-10/oss-cad-suite-linux-x64-20230410.tgz
-tar xvf oss-cad-suite-linux-x64-20230410.tgz 
+wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-06-27/oss-cad-suite-linux-x64-20230627.tgz
+tar xvf oss-cad-suite-linux-x64-20230627.tgz
 ```
 
 You need to add the binary tools to the path. A simple way to do this is to source `oss-cad-suite/environment` in whatever script you are using to source Vivado (see `settings.sh`). This will give you a prefix `(OSS CAD Suite)` before the prompt to let you know you have everything available.
