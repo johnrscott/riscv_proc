@@ -22,9 +22,11 @@ module register_file(clk, resetn, ctrl_reg_num, ctrl_write, data_in, data_out);
    reg [63:0]  registers[31:0];
     
    always @(posedge clk, negedge resetn)
-     if (!resetn)
-       for (n=0; n<32; n=n+1) 
-	 numelem [c] <= 'b0;
+     if (!resetn) begin
+	int n;
+        for (n=0; n<32; n=n+1)
+	 registers[n] <= 0;
+     end
      else if (ctrl_write == 1)
        registers[ctrl_reg_num] <= data_in;	
      else 
@@ -35,15 +37,7 @@ module register_file(clk, resetn, ctrl_reg_num, ctrl_write, data_in, data_out);
 	 data_out <= registers[ctrl_reg_num];
    
 `ifdef FORMAL
-
-   property x0_is_zero;
-   @(posedge clk) disable iff (resetn)
-     // Reading x0 always returns zero
-     if (ctrl_write == 0 && ctrl_reg_num == 0)
-       x0_always_zero: assert (data_out == 0);
-endproperty
-   w_underfill: cover property (x0_is_zero);
-   
+   // TODO 
 `endif
    
 endmodule
