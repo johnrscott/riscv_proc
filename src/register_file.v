@@ -1,6 +1,5 @@
 module register_file(clk, resetn, ctrl_reg_num, ctrl_write, data_in, data_out);
-
-   // Asynchronous reset 
+ 
    input resetn;
    
    // Data written and read from the registers
@@ -20,22 +19,21 @@ module register_file(clk, resetn, ctrl_reg_num, ctrl_write, data_in, data_out);
    input       clk;
 
    reg [63:0]  registers[31:0];
-    
-   always @(posedge clk, negedge resetn)
-     if (!resetn) begin
-	int n;
-        for (n=0; n<32; n=n+1)
-	 registers[n] <= 0;
-     end
-     else if (ctrl_write == 1)
-       registers[ctrl_reg_num] <= data_in;	
-     else 
-       if (ctrl_reg_num == 0)
-	 // x0 is tied to zero
-	 data_out <= 0;
-       else
-	 data_out <= registers[ctrl_reg_num];
-   
+
+   integer     n;
+   always @(posedge clk) begin
+      if (!resetn) begin
+         for (n=0; n<32; n=n+1) begin
+	   registers[n] <= 0;
+	 end
+      end else begin
+	 if (ctrl_write)
+	    registers[ctrl_reg_num] <= data_in;
+      end
+   end
+
+   assign data_out = (~ctrl_write) ? registers[ctrl_reg_num] : 0;
+   	 
 `ifdef FORMAL
    // TODO 
 `endif
