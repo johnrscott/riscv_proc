@@ -11,9 +11,11 @@ smtbmc boolector
 read -formal full_adder.v
 read -formal ripple_carry_adder.v
 read -formal register_file.v
-prep -top ripple_carry_adder
+read -formal processor.v
+prep -top processor
 
 [files]
 full_adder.v
 ripple_carry_adder.v
 register_file.v
+processor.v
