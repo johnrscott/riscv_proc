@@ -8,10 +8,14 @@ basic: mode bmc
 smtbmc boolector
 
 [script]
-read -formal full_adder.v
-read -formal ripple_carry_adder.v
-prep -top ripple_carry_adder
+read -sv -formal full_adder.v
+read -sv -formal ripple_carry_adder.v
+read -sv -formal register_file.v
+read -sv -formal processor.v
+prep -top processor
 
 [files]
 full_adder.v
 ripple_carry_adder.v
+register_file.v
+processor.v
