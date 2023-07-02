@@ -124,21 +124,25 @@ The behaviour of the module is as follows:
 * **Inputs**
   * `instr`: the 32-bit `instr` output from the `instruction_memory` 
 * **Outputs (combinational)**
-  * `imm_mem`: the 64-bit signed offset for memory address computation 
-  * `imm_branch`: the 64-bit signed offset for branch offsets
+  * `imm_mem`: the 64-bit signed offset for memory address computation. Formed from the sign-extended 12-bit immediate in the `instr` word.
+  * `imm_branch`: the 64-bit signed offset for branch offsets. Formed by sign-extending the 13-bit immediate offset encoded in the `instr` word.
 
 ## Control unit `control`
 
 The control unit reads the `instr` output from the instruction memory, and combinationally sets all the control lines required for the datapath modules above:
 
-* `branch`: 1 if `instr` is a branch instruction, 0 otherwise. This is combined with the `zero` output of the ALU to generate `pc_src` (indicating branch-taken) 
-* `mem_to_reg`: multiplexer control:
-  * 0: `rd_data` of `register_file` is from `read_data` of `data_memory`
-  * 1: `rd_data` of `register_file` is from `result` of `main_alu`
-* `reg_write`: drives `write_enable` of `register_file`; 1 to write to register file, zero for no write
-* `mem_read`: drives `read_en` of `data_memory`; 1 to enable a data memory read, 0 otherwise.
-* `mem_write`: drives `write_en` of `data_memory`; 1 to write to data memory, 0 otherwise.
-* `alu_src`: multiplexer control:
-  0: input `b` of `main_alu` is `rs2` output of `register_file`
-  1: input `b` of `main_alu` is `immediate` output of `immediate_gen`
-* `alu_ctrl`: 3-bit, drives the `alu_ctrl` input to `main_alu` 
+* **Inputs**
+  * `instr`: the 32-bit `instr` output from the `instruction_memory` 
+* **Outputs (combinational)**
+  * `branch`: 1 if `instr` is a branch instruction, 0 otherwise. This is combined with the `zero` output of the ALU to generate `pc_src` (indicating branch-taken) 
+  * `mem_to_reg`: multiplexer control:
+	* 0: `rd_data` of `register_file` is from `read_data` of `data_memory`
+	* 1: `rd_data` of `register_file` is from `result` of `main_alu`
+  * `reg_write`: drives `write_enable` of `register_file`; 1 to write to register file, zero for no write
+  * `mem_read`: drives `read_en` of `data_memory`; 1 to enable a data memory read, 0 otherwise.
+  * `mem_write`: drives `write_en` of `data_memory`; 1 to write to data memory, 0 otherwise.
+  * `alu_src`: multiplexer control:
+	0: input `b` of `main_alu` is `rs2` output of `register_file`
+	1: input `b` of `main_alu` is `immediate` output of `immediate_gen`
+  * `alu_ctrl`: 3-bit, drives the `alu_ctrl` input to `main_alu` 
+
