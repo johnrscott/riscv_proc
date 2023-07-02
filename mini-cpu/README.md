@@ -12,4 +12,6 @@ The CPU is 64-bit, uses separate program and data memory, and executes the follo
 - **sd**: store from a register into data memory
 - **beq**: compare two registers, and branch to a target address if equal
 
-See the [specification](1_specification.md) for a detailed prescription of what the implementation does. 
+See the following design documents:
+1. [Specification](1_specification.md) contains a detailed prescription of what the implementation does. 
+2. [Design](2_design.md) describes the elements of the top-level module (following PH2018:Fig4.17)
