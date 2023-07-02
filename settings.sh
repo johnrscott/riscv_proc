@@ -1,4 +1,6 @@
-. $HOME/tools/Xilinx/Vivado/2023.1/settings64.sh
+VIVADO_VERSION=2022.2
+
+. $HOME/tools/Xilinx/Vivado/$VIVADO_VERSION/settings64.sh
 . $HOME/opt/oss-cad-suite/environment
 
 # This will redirect all Vivado log output to
