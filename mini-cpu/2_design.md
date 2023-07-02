@@ -18,7 +18,7 @@ The combinational logic of the datapath must stabilise at least a *setup time* b
 
 The following sections describe the requirements of the modules that make up the datapath.
 
-## Program counter
+## Program counter `program_counter`
 
 The program counter is the main state register that defines what will happen in the next instruction cycle. It has the following behaviour:
 
@@ -29,12 +29,22 @@ The program counter is the main state register that defines what will happen in 
   * `clk`: rising-edge clock
   * `rstn`: synchronous active-low reset. 
   * `pc_src`: 1 bit
-	* 0: add 4 to `pc` on next clock edge
-	* 1: add `immediate` to `pc`
+	* 0: add 4 to `pc` on clock edge
+	* 1: add `immediate` to `pc` on clock edge
 * **Outputs**
   * `pc`: 64-bit read-only net of `pc`
 
 
+The program counter is used to address the `instruction_memory`
 
+## Instruction memory `instruction_memory`
 
+The instruction memory is a read-only view of the instructions. It is addressed with 64 bits, but is only 1KiB in size. It is combinational, in the sense that changes on the address input immediately translate to changes on the output port. It has the following behaviour:
 
+* **State** 
+  * `im`: the instruction memory, 256 4-byte words, pre-loaded with an instruction at synthesis-time.
+* **Inputs**
+  * `pc`: the program counter (output of `program_counter`). Must be 4-byte aligned.
+* **Outputs**
+  * `instr`: `im[pc]`, the 32-bit instruction work at address `pc` (immediately updated on `pc` change).
+  
