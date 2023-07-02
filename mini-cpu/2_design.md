@@ -117,7 +117,7 @@ The immediate field in the instruction is used for two purposes in this computer
 In both cases, the immediate is generated from fields `instr[11:7]` (`imm_low`) and `instr[31:25]` (`imm_high`). However, the instruction format is arranged in such a way that both the sign-extension and the shift-left-by-1 required for `beq` are easily accomplished: 
 
 1. first (for both `ld/sd` and `beq`), concatenate `{imm_high, imm_low}`, and sign extend to 64-bit based on the most-significant bit to make `imm_mem`.
-2. perform the left shift (`beq` only) by moving the least significant bit `imm_mem[0]` `imm_mem[12]` to form `imm_branch`. The sign bit that was previously in this position was already duplicated upwards by the sign extension in step 1.
+2. perform the left shift (`beq` only) by moving the least significant bit `imm_mem[0]` to `imm_mem[11]` to form `imm_branch`. The sign bit that was previously in this position was already duplicated upwards by the sign extension in step 1.
 
 The behaviour of the module is as follows:
 
