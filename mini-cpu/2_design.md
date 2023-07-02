@@ -66,3 +66,28 @@ The register file requires two combinational paths to read `rs1` and `rs2`, and 
   * `rs2_data`: 64-bit read-only net of the register referred to by `rs2`
 
 The register file propagates the values of the read-registers immediately when `rs1` and `rs2` are set; these values propagate through the rest of the datapath, eventually providing the input `rd_data`, which is loaded into `rd` on the next rising clock edge.
+
+## Data memory `data_memory`
+
+The data memory is 1KiB (byte-addressable), and requires one port which is used for both writing and reading. The read path is combinational (the output is immediately available on setting the address), but data is only written on a rising clock edge. 
+
+Since the read output is combinational, a read enable flag is used to prevent junk on the output port when a write is being performed.
+
+The behaviour is as follows:
+
+* **State**
+  * `dm`: an array of 1024 bytes, initialised to zero
+* **Inputs**
+  * `address`: a 64-bit integer identifying the 
+  * `write_data`: 64-bit data to write, if `write_en` is set
+  * `clk`: clock; on rising edge, `write_data` written to `dm` if `write_en` is set
+  * `rstn`: synchronous active-low reset; sets all bytes in`dm` to zero 
+  * `write_en`: determines whether to write `write_data` to `dm`
+  * `read_en`: 1 bit.
+	* 0: set `read_data` to zero
+	* 1: set `read_data` to the 64-bit word starting at `address`
+* **Outputs (combinational)**
+  * `read_data`: 64-bit word starting at `address`; updated immediately when `address` and `read_en` are changed
+
+
+
