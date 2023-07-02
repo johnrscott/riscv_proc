@@ -30,7 +30,7 @@ The integer computational instructions `add`, `sub`, `and`, and `or` operate on 
 
 The `rs1`, `rs2` and `rd` fields contain a number `n` that selects a register `xn`. The following list defines the other values of the opcode fields `opcode`, `funct3` and `funct7`, and states what the instruction does.
 
-* **add rd, rs1, rs2** (rd = rs1 + rs2). Addition is and subtraction are signed, and overflow by wrapping. No particular action is taken on overflow.
+* **add rd, rs1, rs2** (rd = rs1 + rs2). Addition is and subtraction are signed, and overflow by wrapping. No special action is taken on overflow.
   * opcode = 51
   * funct3 = 0 (distinguishes from and/or)
   * funct7 = 0 (distinguishes from sub)
