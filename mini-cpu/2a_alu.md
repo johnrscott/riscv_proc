@@ -4,4 +4,4 @@ The ALU is a key component of two parts of the design: the program counter and t
 
 ## 64-bit Adder `ripple_carry_adder`
 
-The adder implementation is a simple ripply carry adder, formed using a chain of `full_adder`s. 
+The adder implementation is a simple ripply carry adder, formed using a chain of `full_adder`s.
