@@ -25,12 +25,12 @@ The program counter is the main state register that defines what will happen in 
 * **State**
   * `pc`: 64-bit register
 * **Inputs**
-  * `immediate`: value to add to `pc` if `pc_src` = 1
+  * `imm_branch`: value to add to `pc` if `pc_src` = 1
   * `clk`: rising-edge clock
   * `rstn`: synchronous active-low reset. 
   * `pc_src`: 1 bit
 	* 0: add 4 to `pc` on clock edge
-	* 1: add `immediate` to `pc` on clock edge
+	* 1: add `imm_branch` to `pc` on clock edge
 * **Outputs (combinational)**
   * `pc`: 64-bit read-only net of `pc`
 
@@ -157,7 +157,7 @@ Notes:
 * When `reg_write` is deasserted, nothing in the register-writeback datapath matters: `mem_to_reg` and `mem_read`.
 * When `mem_to_reg` is 0, the memory read output does not matter because it is not connected to anything.
 * `branch` cannot be x, because otherwise the `zero` ALU output could accidentally cause a branch on arithmetic
-* `write_data` cannot x, because the memory write data input is permanently connected to the register file output
+* `write_data` cannot be x, because the memory write data input is permanently connected to the register file output
 
 For arithmetic and logic instructions, the `alu_ctrl` field is defined as follows:
 
