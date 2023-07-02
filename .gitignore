@@ -19,3 +19,4 @@ output
 *.svg
 *.json
 /src/test_basic/
+vivado_tmp
