@@ -31,9 +31,8 @@ The program counter is the main state register that defines what will happen in 
   * `pc_src`: 1 bit
 	* 0: add 4 to `pc` on clock edge
 	* 1: add `immediate` to `pc` on clock edge
-* **Outputs**
+* **Outputs (combinational)**
   * `pc`: 64-bit read-only net of `pc`
-
 
 The program counter is used to address the `instruction_memory`
 
@@ -45,6 +44,25 @@ The instruction memory is a read-only view of the instructions. It is addressed 
   * `im`: the instruction memory, 256 4-byte words, pre-loaded with an instruction at synthesis-time.
 * **Inputs**
   * `pc`: the program counter (output of `program_counter`). Must be 4-byte aligned.
-* **Outputs**
-  * `instr`: `im[pc]`, the 32-bit instruction work at address `pc` (immediately updated on `pc` change).
+* **Outputs (combinational)**
+  * `instr`: `im[pc]`, the 32-bit instruction word at address `pc` (immediately updated on `pc` change).
   
+## Register file `register_file`
+
+The register file requires two combinational paths to read `rs1` and `rs2`, and a sequential input to update `rd`. The behaviour is as follows:
+
+* **State**
+  * `registers`: an array of 32 64-bit registers, initialised to zero
+* **Inputs**
+  * `rs1`: a 5-bit integer identifying the register `rs1` to read
+  * `rs2`: a 5-bit integer identifying the register `rs2` to read
+  * `rd`: a 5-bit integer identifying the register `rd` to write (if `rd` is zero, no write is performed)
+  * `rd_data`: the data to write to `rd`, if `write_en` is set
+  * `clk`: clock; on rising edge, `rd_data` written to `rd` if `write_en` is set
+  * `rstn`: synchronous active-low reset; sets all `registers` to zero 
+  * `write_en`: determines whether to write `rd_data` to `rd`
+* **Outputs (combinational)**
+  * `rs1_data`: 64-bit read-only net of the register referred to by `rs1`
+  * `rs2_data`: 64-bit read-only net of the register referred to by `rs2`
+
+The register file propagates the values of the read-registers immediately when `rs1` and `rs2` are set; these values propagate through the rest of the datapath, eventually providing the input `rd_data`, which is loaded into `rd` on the next rising clock edge.
