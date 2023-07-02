@@ -148,10 +148,22 @@ The control unit reads the `instr` output from the instruction memory, and combi
 
 | Instruction            | `branch` | `mem_to_reg` | `reg_write` | `mem_read` | `mem_write` | `alu_src` | `alu_ctrl` |
 |------------------------|----------|--------------|-------------|------------|-------------|-----------|------------|
-| `add`/`sub`/`and`/`or` | 0        | 0            | 1           | 0          | 0           | 0         | see below  |
+| `add`/`sub`/`and`/`or` | 0        | 0            | 1           | x          | 0           | 0         | see below  |
 | `ld`                   | 0        | 1            | 1           | 1          | 0           | 1         | 010        |
-| `sd`                   | 0        | 0            | 0           | 0          | 1           | 1         | 010        |
-| `beq`                  | 1        | 0            | 0           | 0          | 0           | 0         | 110        |
+| `sd`                   | 0        | x            | 0           | x          | 1           | 1         | 010        |
+| `beq`                  | 1        | x            | 0           | x          | 0           | 0         | 110        |
 
+Notes:
+* When `reg_write` is deasserted, nothing in the register-writeback datapath matters: `mem_to_reg` and `mem_read`.
+* When `mem_to_reg` is 0, the memory read output does not matter because it is not connected to anything.
+* `branch` cannot be x, because otherwise the `zero` ALU output could accidentally cause a branch on arithmetic
+* `write_data` cannot x, because the memory write data input is permanently connected to the register file output
 
+For arithmetic and logic instructions, the `alu_ctrl` field is defined as follows:
 
+| Instruction | `alu_ctrl` |
+|-------------|------------|
+| `add`       | 010        |
+| `sub`       | 110        |
+| `and`       | 000        |
+| `or`        | 001        |
