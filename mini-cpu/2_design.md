@@ -34,7 +34,7 @@ The program counter is the main state register that defines what will happen in 
 * **Outputs (combinational)**
   * `pc`: 64-bit read-only net of `pc`
 
-The program counter is used to address the `instruction_memory`
+The program counter is used to address the `instruction_memory`.
 
 ## Instruction memory `instruction_memory`
 
@@ -89,5 +89,41 @@ The behaviour is as follows:
 * **Outputs (combinational)**
   * `read_data`: 64-bit word starting at `address`; updated immediately when `address` and `read_en` are changed
 
+## Arithmetic and Logic Unit `main_alu`
 
+The ALU is a combinational unit instantiated several times for different purposes: for the core arithmetic and logic instructions; for the address calculation for loads and stores; and for updating the program counter. It needs to be able to do the following:
+* Add and subtract signed 64-bit values
+* Bitwise AND and OR 64-bit values
+* Provide a signal indicating equality for branch-if-equal
 
+* **Inputs**
+  * `a`: first 64-bit input to the ALU
+  * `b`: second 64-bit input to the ALU
+  * `alu_ctrl`: 3-bit
+	* 000: `result` = `a` AND `b`
+	* 001: `result` = `a` OR `b`
+	* 010: `result` = `a` + `b` (signed)
+	* 110: `result` = `a` - `b` (signed)
+* **Outputs (combinational)**
+  * `result`: the 64-bit result from the ALU (operation depends on `alu_ctrl`)
+  * `zero`: 1 bit, set if `result` is zero
+
+## Immediate value generation `immediate_gen`
+
+The immediate field in the instruction is used for two purposes in this computer: memory address offsets in loads and stores, and branch offsets in the branch-if-equal instruction. 
+
+## Control unit `control`
+
+The control unit reads the `instr` output from the instruction memory, and combinationally sets all the control lines required for the datapath modules above:
+
+* `branch`: 1 if `instr` is a branch instruction, 0 otherwise. This is combined with the `zero` output of the ALU to generate `pc_src` (indicating branch-taken) 
+* `mem_to_reg`: multiplexer control:
+  * 0: `rd_data` of `register_file` is from `read_data` of `data_memory`
+  * 1: `rd_data` of `register_file` is from `result` of `main_alu`
+* `reg_write`: drives `write_enable` of `register_file`; 1 to write to register file, zero for no write
+* `mem_read`: drives `read_en` of `data_memory`; 1 to enable a data memory read, 0 otherwise.
+* `mem_write`: drives `write_en` of `data_memory`; 1 to write to data memory, 0 otherwise.
+* `alu_src`: multiplexer control:
+  0: input `b` of `main_alu` is `rs2` output of `register_file`
+  1: input `b` of `main_alu` is `immediate` output of `immediate_gen`
+* `alu_ctrl`: 3-bit, drives the `alu_ctrl` input to `main_alu` 

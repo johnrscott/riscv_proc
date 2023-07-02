@@ -103,8 +103,8 @@ This format (SB-type) is obtained from S-type by:
 The values in the branch instruction are:
 
 * **beq rs1, rs2, N** (if rs1 == rs2, pc += N). 
-  * opcode = 35 (one bit different from load)
-  * funct3 = 3
+  * opcode = 99
+  * funct3 = 0
   * immediate = N (N is even; the immediate field is sign-extended before adding to `pc`)
 
 
