@@ -13,9 +13,6 @@ module tb_full_adder();
 
    initial begin
       
-      $dumpfile("testbench/full_adder.vcd");
-      $dumpvars(0, tb_full_adder);
-      
       // output = 0
       a = 0; b = 0; carry_in = 0;
       #period;
