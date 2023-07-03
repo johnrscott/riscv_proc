@@ -8,7 +8,7 @@ module full_adder
 endmodule
 
 module ripple_carry_adder
-  #(parameter xlen = 16)
+  #(parameter xlen = 3)
    (output [xlen-1:0] sum,
     output 	 carry_out,
     input [xlen-1:0] a, b,
