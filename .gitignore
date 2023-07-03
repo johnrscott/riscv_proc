@@ -20,3 +20,4 @@ output
 *.json
 /src/test_basic/
 vivado_tmp
+testbench
