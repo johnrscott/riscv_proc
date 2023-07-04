@@ -1,5 +1,4 @@
-module alu
-  #(parameter xlen = 64)
+module alu #(parameter xlen = 64)
    (output reg [xlen-1:0] result,
     output 	     zero,
     input [xlen-1:0] a, b,

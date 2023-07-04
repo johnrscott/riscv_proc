@@ -5,6 +5,7 @@ module testbench();
    tb_alu alu();
    tb_program_counter program_counter();
    tb_immediate_gen immediate_gen();
+   tb_register_file register_file();
    
    initial begin
       $dumpfile("testbench/testbench.vcd");

@@ -1,7 +1,7 @@
 module immediate_gen
   #(parameter xlen = 64) 
    (output [xlen-1:0] imm_mem, imm_branch,
-    input [32:0] instr);
+    input [31:0] instr);
 
    // The 12-bit immediate field taken 
    // S- and SB-type instruction formats

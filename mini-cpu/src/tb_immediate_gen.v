@@ -5,7 +5,7 @@ module tb_immediate_gen();
    localparam period = 20;
    localparam xlen = 64;
       
-   reg [xlen-1:0] instr;
+   reg [31:0] instr;
    wire [xlen-1:0] imm_mem, imm_branch;
    
    immediate_gen #(.xlen(xlen)) uut
