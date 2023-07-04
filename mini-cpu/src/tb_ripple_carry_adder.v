@@ -27,6 +27,14 @@ module tb_ripple_carry_adder();
       if ((sum !== 0) || (carry_out !== 0))
 	$error("Error on output 0 + 0 = 0");
 
+      // 7 + 1 = 8, tests an internal carry
+      a = 7;
+      b = 1;
+      carry_in = 0;
+      #period;
+      if ((sum !== 8) || (carry_out !== 0))
+	$error("Error on output 7 + 1 = 8");
+      
       // -1 + 1 = 0, tests carry_out
       a = -1;
       b = 1;
@@ -35,15 +43,13 @@ module tb_ripple_carry_adder();
       if ((sum !== 0) || (carry_out !== 1))
 	$error("Error on output -1 + 1 = 0");
 
-      // 53 - 48 = 5, tests subtraction
+      // 53 - 48 = 5, tests twos-complement subtraction
       a = 53;
       b = ~48;
       carry_in = 1;
       #period;
       if ((sum !== 5) || (carry_out !== 1))
 	$error("Error on output 53 - 48 = 5");
-
-      
       
    end
       
