@@ -13,7 +13,7 @@ module alu
    assign zero = ~&result;
    
    // Negate b and set carry_in for subtraction
-   assign b_or_not_b = alu_ctrl[2] ? b : ~b;
+   assign b_or_not_b = alu_ctrl[2] ? ~b : b;
    assign carry_in = alu_ctrl[2];
 
    // Adder performs addition and subtraction
