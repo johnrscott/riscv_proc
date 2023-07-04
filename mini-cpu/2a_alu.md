@@ -28,7 +28,6 @@ The ALU performs addition and subtraction, logical AND and OR, set if less than,
 * **Inputs**
   * `a`: the first `xlen`-bit operand
   * `b`: the second `xlen`-bit operand
-  * `result`: 
   * `alu_ctrl`: 3-bit
 	* 000: `result` = `a` & `b`
 	* 001: `result` = `a` | `b`

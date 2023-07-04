@@ -97,6 +97,4 @@ module tb_alu();
       
    end
 
-
-
 endmodule

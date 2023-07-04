@@ -8,7 +8,6 @@ module alu
    wire [xlen-1:0]   sum, b_or_not_b;
    wire 	     carry_out, carry_in, sign_bit;
 		     
-
    // Zero output is set if result is all-zero
    assign zero = (result == 0);
    
