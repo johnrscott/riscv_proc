@@ -12,7 +12,8 @@ module tb_ripple_carry_adder();
      (.sum(sum),
       .carry_out(carry_out),
       .a(a),
-      .b(b));
+      .b(b),
+      .carry_in(carry_in));
    
    integer 	   n;
    
@@ -39,8 +40,10 @@ module tb_ripple_carry_adder();
       b = ~48;
       carry_in = 1;
       #period;
-      if ((sum !== 5) || (carry_out !== 0))
+      if ((sum !== 5) || (carry_out !== 1))
 	$error("Error on output 53 - 48 = 5");
+
+      
       
    end
       
