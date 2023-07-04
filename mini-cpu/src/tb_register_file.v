@@ -118,7 +118,6 @@ module tb_register_file();
 	   $error("Expected all registers zero in second reset");
       end
       
-      
    end
 
    
