@@ -36,3 +36,4 @@ The ALU performs addition and subtraction, logical AND and OR, set if less than,
   	* 110: `result` = `a` - `b`
   	* 111: `result` = 1 if `a` < `b`, zero otherwise
 
+In the `alu_ctrl` lines, bit 0 and 1 distinguish AND, OR, unsigned addition, and set less than (by setting the multiplexer that decides `result`); bit 2 negates operand `b` and sets the `carry_in` of the 64-bit adder, which turns addition into two's-complement subtraction.
