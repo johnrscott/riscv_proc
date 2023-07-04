@@ -18,11 +18,8 @@ module immediate_gen
 
    // Left-shift to get the 13-bit branch offset.
    // No shift is performed -- the instruction is
-   // laid out in such a way that 
-   always @(*) begin
-      imm_branch = imm_mem;
-      imm_branch[11] = imm_branch[0];
-      imm_branch[0] = 0;
-   end
+   // laid out in such a way that only a single bit
+   // needs to be moved to get the shifted result
+   assign imm_branch = { imm_mem[xlen-1:12], imm12[0], imm12[10:1], 1'b0 };
    
-module
+endmodule
