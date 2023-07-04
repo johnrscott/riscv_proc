@@ -20,7 +20,7 @@ module tb_alu();
    alu #(.xlen(xlen)) uut
      (.result(result),
       .zero(zero),
-      .a(b), .b(b),
+      .a(a), .b(b),
       .alu_ctrl(alu_ctrl));
    
    initial begin
@@ -41,6 +41,15 @@ module tb_alu();
       if ((result !== 4'b1111) || (zero !== 0))
 	$error("Error on output 1010 | 0101 = 1111");
 
+      // 5 + 10 = 15
+      a = 5;
+      b = 10;
+      alu_ctrl = alu_ctrl_add;
+      #period;
+      if ((result !== 15) || (zero !== 0))
+	$error("Error on output 5 + 10 = 15");
+
+      
       
    end
 

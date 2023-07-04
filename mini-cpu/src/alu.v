@@ -10,7 +10,7 @@ module alu
 		     
 
    // Zero output is set if result is all-zero
-   assign zero = ~&result;
+   assign zero = (result == 0);
    
    // Negate b and set carry_in for subtraction
    assign b_or_not_b = alu_ctrl[2] ? ~b : b;
