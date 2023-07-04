@@ -1,14 +1,13 @@
 module alu
   #(parameter xlen = 64)
-   (output [xlen-1:0] result,
+   (output reg [xlen-1:0] result,
     output 	     zero,
     input [xlen-1:0] a, b,
     input [2:0]      alu_ctrl);
    
-   wire [xlen-1:0]   sum;
-   wire 	     carry_out, carry_in;
-
-   wire 	     b_or_not_b, sign_bit;
+   wire [xlen-1:0]   sum, b_or_not_b;
+   wire 	     carry_out, carry_in, sign_bit;
+		     
 
    // Zero output is set if result is all-zero
    assign zero = ~&result;

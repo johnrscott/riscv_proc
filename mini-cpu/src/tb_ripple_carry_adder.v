@@ -1,3 +1,5 @@
+`timescale 1 ns/10 ps
+
 module tb_ripple_carry_adder();
 
    localparam period = 20;
