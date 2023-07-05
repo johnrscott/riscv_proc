@@ -5,7 +5,7 @@ module data_memory
 
    // 64-bit memory, byte addressable, but reads and
    // writes must be 8-byte aligned.
-   reg [63:0] dm[6:0];
+   reg [63:0] dm[128];
    wire [6:0] word_address;
    integer    n;
    
