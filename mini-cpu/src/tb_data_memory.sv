@@ -42,7 +42,7 @@ module tb_data_memory();
       // Attempt to write in reset
       write_data = 5;
       write_en = 1;
-      address = 4;
+      address = 8;
       #period;
       
       // Check that all the registers is still zero
@@ -53,7 +53,7 @@ module tb_data_memory();
 
       // Deassert reset
       rstn = 1;
-      read_en = 0;
+      read_en = 1;
       #period;
 
       // Write value again and check it is written
