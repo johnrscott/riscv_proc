@@ -1,7 +1,7 @@
-module control(output is_branch, mem_to_reg, 
+module control(output reg is_branch, mem_to_reg, 
 	       reg_write, mem_read, mem_write,
 	       alu_src,
-	       output [2:0] alu_ctrl,
+	       output reg [2:0] alu_ctrl,
 	       input [31:0] instr);
 
    localparam OPCODE_ADD_SUB_AND_OR = 7'd51;
@@ -17,25 +17,21 @@ module control(output is_branch, mem_to_reg,
    
    wire [6:0] 		    opcode, funct7;
    wire [2:0] 		    funct3;
-   wire [4:0] 		    rd, rs1, rs2;
    
    // R-type instruction layout
    assign opcode = instr[6:0];
-   assign rd = instr[11:7];
    assign funct3 = instr[14:12];
-   assign rs1 = instr[19:15];
-   assign rs2 = instr[24:20];
    assign funct7 = instr[31:25];
    
    always @(*) begin
 
       is_branch = 0;
-      mem_to_reg = x;
+      mem_to_reg = 'x;
       reg_write = 0;
-      mem_read = x;
+      mem_read = 'x;
       mem_write = 0;
       alu_src = 0;
-      alu_ctrl = x;
+      alu_ctrl = 'x;
       
       case (opcode)
         OPCODE_ADD_SUB_AND_OR: begin
@@ -60,7 +56,7 @@ module control(output is_branch, mem_to_reg,
 	end
 	OPCODE_SD: begin
 	   mem_write = 1;
-	   alu_src = q;
+	   alu_src = 1;
 	   alu_ctrl = 3'b010;
 	end
 	OPCODE_BEQ: begin
