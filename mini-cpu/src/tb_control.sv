@@ -153,6 +153,22 @@ module tb_control();
       if (alu_ctrl !== 3'b110)
 	$error("Expecting alu_ctrl = 110 for sub");
 
+      // 0x003170b3 (and x1, x2, x3)
+      instr = 'h003170b3;
+      #period;
+      check_arithmetic_logic_signals(is_branch, mem_to_reg, reg_write,
+				     mem_read, mem_write, alu_src);
+      if (alu_ctrl !== 3'b000)
+	$error("Expecting alu_ctrl = 000 for AND");
+
+      // 0x003160b3 (or x1, x2, x3)
+      instr = 'h003160b3;
+      #period;
+      check_arithmetic_logic_signals(is_branch, mem_to_reg, reg_write,
+				     mem_read, mem_write, alu_src);
+      if (alu_ctrl !== 3'b001)
+	$error("Expecting alu_ctrl = 001 for OR");
+
       
    end
 
