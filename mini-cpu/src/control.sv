@@ -10,8 +10,8 @@ module control(output reg is_branch, mem_to_reg,
    localparam OPCODE_BEQ = 7'd99;
    
    localparam FUNCT3_ADD_SUB = 3'd0;
-   localparam FUNCT3_AND = 3'd6;
-   localparam FUNCT3_OR = 3'd7;
+   localparam FUNCT3_AND = 3'd7;
+   localparam FUNCT3_OR = 3'd6;
    localparam FUNCT7_ADD = 7'd0;
    localparam FUNCT7_SUB = 7'd32;
    
