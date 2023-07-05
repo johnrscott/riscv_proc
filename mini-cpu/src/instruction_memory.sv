@@ -17,8 +17,7 @@ module instruction_memory
       // Instructions here
 
       // Infinite branch loop (put at end)
-      im[0] = 'h00000063;
-      
+      im[0] = 'h00000063;      
 
    end
    
