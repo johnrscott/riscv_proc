@@ -168,8 +168,6 @@ module tb_control();
 				     mem_read, mem_write, alu_src);
       if (alu_ctrl !== 3'b001)
 	$error("Expecting alu_ctrl = 001 for OR");
-
-      
    end
 
 endmodule
