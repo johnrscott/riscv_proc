@@ -69,16 +69,16 @@ The register file propagates the values of the read-registers immediately when `
 
 ## Data memory `data_memory`
 
-The data memory is 1KiB (byte-addressable), and requires one port which is used for both writing and reading. The read path is combinational (the output is immediately available on setting the address), but data is only written on a rising clock edge. 
+The data memory is 1KiB (64-bit addressable; this differs from the RISC-V specification), and requires one port which is used for both writing and reading. The read path is combinational (the output is immediately available on setting the address), but data is only written on a rising clock edge. 
 
 Since the read output is combinational, a read enable flag is used to prevent junk on the output port when a write is being performed.
 
 The behaviour is as follows:
 
 * **State**
-  * `dm`: an array of 1024 bytes, initialised to zero
+  * `dm`: an array of 128 64-bit words
 * **Inputs**
-  * `address`: a 64-bit integer identifying the 
+  * `address`: a 64-bit integer identifying the first byte of the 64-bit word to read. The address must be word-aligned. 
   * `write_data`: 64-bit data to write, if `write_en` is set
   * `clk`: clock; on rising edge, `write_data` written to `dm` if `write_en` is set
   * `rstn`: synchronous active-low reset; sets all bytes in`dm` to zero 

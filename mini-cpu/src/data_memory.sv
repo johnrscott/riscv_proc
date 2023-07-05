@@ -25,7 +25,7 @@ module data_memory
    // Read the data at computed byte addresses
    // generate
    for (m=0; m<8; m++)
-     assign read_data_internal[(8*m)+:8] = dm[byte_addresses[m]];
+     assign read_data_internal[(8*m+7)-:8] = dm[byte_addresses[m]];
       
    assign read_data = read_en ? read_data_internal : 0;
 
@@ -34,7 +34,7 @@ module data_memory
 	for (n=0; n<1024; n++)
 	  dm[n] <= 0;
       else if (write_en)
-	for (n=0; n<8; n=n+1)
+	for (n=0; n<8; n++)
 	  dm[byte_addresses[n]] <= write_data[(8*n)+:8];
    end
 endmodule

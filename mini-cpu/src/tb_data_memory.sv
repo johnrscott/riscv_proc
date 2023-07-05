@@ -53,14 +53,12 @@ module tb_data_memory();
 
       // Deassert reset
       rstn = 1;
+      read_en = 0;
       #period;
 
       // Write value again and check it is written
       if (read_data !== 5)
 	$error("Expected read_data = 5");
-      
-      
-      
 	  
    end
    
