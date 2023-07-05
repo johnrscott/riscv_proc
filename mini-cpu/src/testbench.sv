@@ -12,7 +12,7 @@ module testbench();
       $dumpfile("testbench/testbench.vcd");
       $dumpvars(0, testbench);
 
-      #1000 $finish;      
+      #10000 $finish;      
    end
    
 endmodule

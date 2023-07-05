@@ -59,7 +59,25 @@ module tb_data_memory();
       // Write value again and check it is written
       if (read_data !== 5)
 	$error("Expected read_data = 5");
-	  
+
+      // Perform writes to the whole memory
+      for (n=0; n<128; n++) begin
+	 address = 8*n;
+	 write_data = 3*n + 1;
+	 write_en = 1;
+	 #period;	 
+      end
+
+      // Read the memory to check
+      for (n=0; n<128; n++) begin
+	 address = 8*n;
+	 read_en = 1;
+	 #half_cycle;	 
+	 if (read_data !== (3*n+1))
+	   $error ("Expected memory address n to be 3n+1");
+      end
+	
+      
    end
    
 endmodule
