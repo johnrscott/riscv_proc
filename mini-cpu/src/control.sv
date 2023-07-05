@@ -40,7 +40,7 @@ module control(output reg is_branch, mem_to_reg,
 	   if (funct3 == FUNCT3_ADD_SUB)
 	     if (funct7 == FUNCT7_ADD)
 	       alu_ctrl = 3'b010;
-	     else if (funct7 == FUNCT7_ADD)
+	     else if (funct7 == FUNCT7_SUB)
 	       alu_ctrl = 3'b110;
 	   else if (funct3 == FUNCT3_AND)
 	     alu_ctrl = 3'b000;
