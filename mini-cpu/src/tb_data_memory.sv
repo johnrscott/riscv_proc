@@ -12,6 +12,8 @@ module tb_data_memory();
    reg 		  write_en, read_en;
    wire [xlen-1:0] read_data;
 
+   integer 	   n;
+   
    data_memory uut(.read_data(read_data),
 		   .address(address),
 		   .write_data(write_data),
@@ -36,8 +38,30 @@ module tb_data_memory();
 
       // Wait for first clock edge
       #period;
+
+      // Attempt to write in reset
+      write_data = 5;
+      write_en = 1;
+      address = 4;
+      #period;
+      
+      // Check that all the registers is still zero
+      read_en = 1;
+      for (n=0; n<1024; n++) 
+	if (read_data !== 0)
+	  $error("Expected memory initially zero");
+
+      // Deassert reset
+      rstn = 1;
+      #period;
+
+      // Write value again and check it is written
+      if (read_data !== 5)
+	$error("Expected read_data = 5");
       
       
+      
+	  
    end
    
 endmodule

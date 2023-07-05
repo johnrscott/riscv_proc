@@ -4,7 +4,6 @@ run_testbench: testbench/testbench
 wave: run_testbench
 	gtkwave testbench/testbench.vcd
 
-testbench/testbench: src/*.v
+testbench/testbench: src/*.sv
 	mkdir -p testbench
-	iverilog -o $@ -s testbench $^
-
+	iverilog -g2005-sv -o $@ -s testbench $^

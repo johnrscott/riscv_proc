@@ -21,3 +21,4 @@ output
 /src/test_basic/
 vivado_tmp
 testbench
+.emacs
