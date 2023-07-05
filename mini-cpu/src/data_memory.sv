@@ -9,7 +9,7 @@ module data_memory
    wire [6:0] word_address;
    integer    n;
    
-   assign word_address = address[8:3];
+   assign word_address = address[9:3];
    assign read_data = read_en ? dm[word_address] : 0;
 
    always @(posedge clk) begin
@@ -20,5 +20,4 @@ module data_memory
 	dm[word_address] <= write_data;
    end
    
-
 endmodule

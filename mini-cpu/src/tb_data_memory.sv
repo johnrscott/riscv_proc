@@ -63,18 +63,21 @@ module tb_data_memory();
       // Perform writes to the whole memory
       for (n=0; n<128; n++) begin
 	 address = 8*n;
-	 write_data = 3*n + 1;
+	 write_data = n;
 	 write_en = 1;
 	 #period;	 
       end
-
+      
+      // End write
+      write_en = 0;
+      
       // Read the memory to check
       for (n=0; n<128; n++) begin
 	 address = 8*n;
 	 read_en = 1;
 	 #half_cycle;	 
-	 if (read_data !== (3*n+1))
-	   $error ("Expected memory address n to be 3n+1");
+	 if (read_data !== (n))
+	   $error("Expected memory address n to be 3n+1");
       end
 	
       
