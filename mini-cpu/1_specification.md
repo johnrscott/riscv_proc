@@ -43,12 +43,12 @@ The `rs1`, `rs2` and `rd` fields contain a number `n` that selects a register `x
 
 * **and rd, rs1, rs2** (rd = rs1 & rs2). 
   * opcode = 51
-  * funct3 = 6 (distinguishes from or/add/sub)
+  * funct3 = 7 (distinguishes from or/add/sub)
   * funct7 = 0
 
 * **or rd, rs1, rs2** (rd = rs1 | rs2). 
   * opcode = 51
-  * funct3 = 7 (distinguishes from and/add/sub)
+  * funct3 = 6 (distinguishes from and/add/sub)
   * funct7 = 0
 
 The `opcode` 51 indicates an arithmetic or logical instruction. The `funct3` field is used distinguish between arithmetic, `and`, or `or`. One bit of `funct7` distinguishes added from subtraction.
