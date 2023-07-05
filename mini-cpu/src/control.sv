@@ -12,6 +12,7 @@ module control(output reg is_branch, mem_to_reg,
    localparam FUNCT3_ADD_SUB = 3'd0;
    localparam FUNCT3_AND = 3'd7;
    localparam FUNCT3_OR = 3'd6;
+   
    localparam FUNCT7_ADD = 7'd0;
    localparam FUNCT7_SUB = 7'd32;
    
@@ -37,11 +38,12 @@ module control(output reg is_branch, mem_to_reg,
         OPCODE_ADD_SUB_AND_OR: begin
 	   mem_to_reg = 0;
 	   reg_write = 1;
-	   if (funct3 == FUNCT3_ADD_SUB)
+	   if (funct3 == FUNCT3_ADD_SUB) begin
 	     if (funct7 == FUNCT7_ADD)
 	       alu_ctrl = 3'b010;
 	     else if (funct7 == FUNCT7_SUB)
 	       alu_ctrl = 3'b110;
+	   end
 	   else if (funct3 == FUNCT3_AND)
 	     alu_ctrl = 3'b000;
 	   else if (funct3 == FUNCT3_OR)
