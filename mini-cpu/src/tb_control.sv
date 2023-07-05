@@ -50,6 +50,29 @@ task check_load_signals(input is_branch, mem_to_reg,
    
 endtask;
 
+task check_store_signals(input is_branch, mem_to_reg, 
+			 reg_write, mem_read, mem_write,
+			 alu_src,
+			 input [2:0] alu_ctrl);
+   
+   if (is_branch !== 0)
+     $error("Expected is_branch = 0 in store instruction");
+
+   if (reg_write !== 0)
+     $error("Expected reg_write = 0 in store instruction");
+   
+   if (mem_write !== 1)
+     $error("Expected mem_write = 1 in store instruction");
+
+   if (alu_src !== 1)
+     $error("Expected alu_src = 1 in store instruction");
+
+   if (alu_ctrl !== 3'b010)
+     $error("Expected alu_ctrl = 010 in store instruction");
+   
+endtask;
+
+
 
 module tb_control();
 
@@ -87,6 +110,13 @@ module tb_control();
       check_load_signals(is_branch, mem_to_reg, reg_write,
 			 mem_read, mem_write, alu_src, alu_ctrl);
 
+      // 0x02113423 (sd x1, 40(x2))
+      instr = 'h02113423;
+      #period;
+      check_store_signals(is_branch, mem_to_reg, reg_write,
+			 mem_read, mem_write, alu_src, alu_ctrl);
+
+      
       
    end
 
