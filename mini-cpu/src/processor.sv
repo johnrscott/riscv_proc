@@ -55,7 +55,7 @@ module processor(output main_alu_zero,
    assign rd = instr[11:7];
    assign rs1 = instr[19:15];
    assign rs2 = instr[24:20];
-   assign write_data = mem_to_reg ? mem_read_data : main_alu_result;
+   assign rd_data = mem_to_reg ? mem_read_data : main_alu_result;
    register_file register_file_0
      (.rs1_data(rs1_data),
       .rs2_data(rs2_data),
