@@ -8,7 +8,7 @@ module instruction_memory
    wire [6:0] word_address;
 
    assign word_address = pc[9:3];
-   assign read_data = read_en ? im[word_address] : 0;
+   assign instr = im[word_address];
 
    // Initialise the instruction memory. Not necessarily
    // synthesizable
