@@ -14,9 +14,8 @@ module processor(output main_alu_zero,
    wire [2:0] 		    alu_ctrl;
    wire [31:0] 		    instr;   
 
-   wire [63:0] 		    imm_branch, imm_mem;
-
-   wire [63:0] 		    main_alu_b;
+   wire [63:0] 		    imm_branch, imm_mem,
+			    main_alu_b, main_alu_result;
    
    control control_0
      (.is_branch(is_branch),

@@ -10,15 +10,4 @@ module instruction_memory
    assign word_address = pc[9:3];
    assign instr = im[word_address];
 
-   // Initialise the instruction memory. Not necessarily
-   // synthesizable
-   initial begin
-
-      // Instructions here
-
-      // Infinite branch loop (put at end)
-      im[0] = 'h00000063;      
-
-   end
-   
 endmodule

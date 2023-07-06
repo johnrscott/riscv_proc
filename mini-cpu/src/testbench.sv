@@ -8,6 +8,8 @@ module testbench();
    tb_register_file register_file();
    tb_data_memory data_memory();
    tb_control control();
+
+   tb_processor processor();
    
    initial begin
       $dumpfile("testbench/testbench.vcd");
