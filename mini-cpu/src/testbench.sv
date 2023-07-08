@@ -7,6 +7,7 @@ module testbench();
    tb_immediate_gen immediate_gen();
    tb_register_file register_file();
    tb_data_memory data_memory();
+   tb_instruction_memory instruction_memory();
    tb_control control();
 
    tb_processor processor();
