@@ -5,7 +5,7 @@ module register_file #(parameter xlen = 64)
     input 	     write_en, clk, rstn);
 
    // registers[0] is always zero
-   reg [xlen-1:0]    registers[31:0];
+   reg [xlen-1:0]    registers[32];
    
    assign rs1_data = registers[rs1];
    assign rs2_data = registers[rs2];

@@ -24,20 +24,7 @@ module tb_processor();
 	 #half_cycle clk = 0;
       end
    end
-
-   initial begin: load_initial_registers
-
-      uut.register_file_0.registers[0] = 0;
-      uut.register_file_0.registers[1] = -1;
-      uut.register_file_0.registers[2] = 'hf0f0f0f0_f0f0f0f0;
-      uut.register_file_0.registers[3] = 'h0f0f0f0f_0f0f0f0f;
-      uut.register_file_0.registers[4] = 10;
-      uut.register_file_0.registers[5] = -23;
-      uut.register_file_0.registers[6] = -13;
-      uut.register_file_0.registers[7] = 33;
-
-   end
-
+   
    initial begin: load_instruction_memory
 
       // The instruction memory is an array of 4-byte words
@@ -64,6 +51,20 @@ module tb_processor();
       // Bring out of reset
       rstn = 1;
 
+      // Since all the registers are set to zero on reset,
+      // this must be done after reset (a workaround for the
+      // testbench). It must happen before the first rising
+      // clock edge, so double check the timing here.
+      uut.register_file_0.registers[0] = 0;
+      uut.register_file_0.registers[1] = -1;
+      uut.register_file_0.registers[2] = 'hf0f0f0f0_f0f0f0f0;
+      uut.register_file_0.registers[3] = 'h0f0f0f0f_0f0f0f0f;
+      uut.register_file_0.registers[4] = 10;
+      uut.register_file_0.registers[5] = -23;
+      uut.register_file_0.registers[6] = -13;
+      uut.register_file_0.registers[7] = 33;
+
+      
       // 
       
    end      
