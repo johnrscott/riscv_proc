@@ -4,7 +4,7 @@ module instruction_memory
 
    // 32-bit memory, byte addressable, but reads and
    // writes must be 8-byte aligned.
-   reg [31:0] im[236];
+   reg [31:0] im[256];
    wire [6:0] word_address;
 
    assign word_address = pc[9:3];
