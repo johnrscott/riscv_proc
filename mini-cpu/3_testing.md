@@ -20,21 +20,21 @@ These tests check that the arithmetic and logic functions work across all the re
 
 #### Non-overlapping operand/result registers
 
-The following set of instruction performs arithmetic and logic on the first 8 registers, and writes the results to the higher registers.
+The following set of instruction performs arithmetic and logic on the first 8 registers, and writes the results to the higher registers. Encoded instructions are shown in the comments, along with what operation is performed.
 
 ```asm
-or x8, x0, x1 // x8 = x0 | x1 = -1
-or x9, x1, x2 // x9 = x1 | x2 = -1
+or x8, x0, x1 // 00106433, x8 = x0 | x1 = -1
+or x9, x1, x2 // 0020e4b3, x9 = x1 | x2 = -1
 
-and x10, x1, x2 // x10 = x1 & x2 = a
-and x11, x2, x3 // x10 = x2 & x3 = 0
+and x10, x1, x2 // 0020f533, x10 = x1 & x2 = a
+and x11, x2, x3 // 003175b3, x10 = x2 & x3 = 0
 
-add x12, x0, x0 // x12 = x0 + x0 = 0
-add x13, x0, x1 // x13 = x0 + x1 = -1
-add x14, x4, x5 // x14 = x4 + x5 = 10 + -13 = -13
+add x12, x0, x0 // 00000633, x12 = x0 + x0 = 0
+add x13, x0, x1 // 001006b3, x13 = x0 + x1 = -1
+add x14, x4, x5 // 00520733, x14 = x4 + x5 = 10 + -13 = -13
 
-sub x15, x0, x0 // x15 = x0 - x0 = 0
-sub x16, x4, x5 // x16 = x4 + x5 = 10 - -13 = -23
-sub x17, x0, x1 // x17 = x0 - x1 = 0 - -1 = 1
+sub x15, x0, x0 // 000007b3, x15 = x0 - x0 = 0
+sub x16, x4, x5 // 00520833, x16 = x4 + x5 = 10 - -13 = -23
+sub x17, x0, x1 // 001008b3, x17 = x0 - x1 = 0 - -1 = 1
 ```
 

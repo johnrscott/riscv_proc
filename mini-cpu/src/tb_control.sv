@@ -117,7 +117,7 @@ module tb_control();
    initial begin
 
       // Instruction encodings below from here:
-      // https://luplab.gitlab.io/rvcodecjs/#q=beq+x1,+x2,+40&abi=false&isa=AUTO   
+      // https://luplab.gitlab.io/rvcodecjs/
 
       // 0x02208463 (beq x1, x2, 40)
       instr = 'h02208463;
