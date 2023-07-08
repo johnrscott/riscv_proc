@@ -17,11 +17,6 @@ module tb_instruction_memory();
       uut.im[2] = 'h0020f533; // x10 = x1 & x2 = a
       uut.im[3] = 'h003175b3; // x10 = x2 & x3 = 0
       uut.im[4] = 'h00000633; // x12 = x0 + x0 = 0
-      uut.im[5] = 'h001006b3; // x13 = x0 + x1 = -1
-      uut.im[6] = 'h00520733; // x14 = x4 + x5 = -13
-      uut.im[7] = 'h000007b3; // x15 = x0 - x0 = 0
-      uut.im[8] = 'h00520833; // x16 = x4 + x5 = -23
-      uut.im[9] = 'h001008b3; // x17 = x0 - x1  = 1
    end
    
    initial begin: check_instructions_at_pc_address
@@ -31,11 +26,28 @@ module tb_instruction_memory();
       if (instr !== 'h00106433)
 	$error("Error in instruction memory at pc = 0");
 
-      pc = 1;
+      pc = 4;
       #period;
       if (instr !== 'h0020e4b3)
-	$error("Error in instruction memory at pc = 0");
+	$error("Error in instruction memory at pc = 4");
 
+      pc = 8;
+      #period;
+      if (instr !== 'h0020f533)
+	$error("Error in instruction memory at pc = 8");
+
+      pc = 12;
+      #period;
+      if (instr !== 'h003175b3)
+	$error("Error in instruction memory at pc = 12");
+
+      pc = 16;
+      #period;
+      if (instr !== 'h00000633)
+	$error("Error in instruction memory at pc = 16");
+
+      
+      
    end
    
 endmodule
