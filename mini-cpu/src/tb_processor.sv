@@ -65,7 +65,7 @@ module tb_processor();
       uut.register_file_0.registers[7] = 33;
 
       
-      // 
+      // pc = 0, expect 
       
    end      
    
