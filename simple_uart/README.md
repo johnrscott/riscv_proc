@@ -6,4 +6,45 @@ This folder contains a UART module for interfacing the Arty-A7 FT2232 UART bridg
 
 For debugging using an oscilloscope, these two pins are duplicated to `rx_debug` on pin G13 and `tx_debug` on pin D13 (respectively, pin 1 and pin 7 on jumper JA).
 
+## Connecting to the UART
 
+Run the following commands to install the serial utility `cu` and add yourself to the `dialout` group. 
+
+```bash
+sudo apt install libusb cu libusb-1.0-0-dev
+sudo usermod -aG dialout {your-username}
+```
+
+Restart the computer to ensure the group change takes effect. Then plug in the FPGA and check that `ttyUSB0` and `ttyUSB1` are both showing in `/dev/` (one is the programming serial connection and the other is the UART):
+
+```bash
+ls /dev/ | grep USB
+```
+
+To check everything is working, connect to the default-installed demo program on the Arty A7 by running:
+
+```bash
+cu -s 115200 -l /dev/ttyUSB1
+```
+
+Type `~.` to exit `cu`.
+
+
+## Debugging FPGA programming problems
+
+If you get the following message when attempting to connect to the FPGA board:
+
+```
+Vivado% current_hw_target [get_hw_targets */xilinx_tcf/Digilent/210319B0C665A]
+ERROR: [Labtoolstcl 44-199] No matching targets found on connected servers: localhost
+Resolution: If needed connect the desired target to a server and use command refresh_hw_server. Then rerun the get_hw_targets command.
+ERROR: [Common 17-39] 'get_hw_targets' failed due to earlier errors.
+```
+
+you may be missing [cable drivers](https://support.xilinx.com/s/article/54381?language=en_US). Navigate to the folder `/tools/Xilinx/Vivado/2023.1/data/xicom/cable_drivers/lin64/install_script/install_drivers` (or your equivalent) and run
+
+```bash
+sudo ./install_drivers
+```
+
+Unplug and plug back in all USB cables, and run `refresh_hw_server` (or restart Vivado TCL console). The connection should now work.
