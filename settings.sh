@@ -1,4 +1,4 @@
-VIVADO_VERSION=2022.2
+VIVADO_VERSION=2023.1
 
 . $HOME/tools/Xilinx/Vivado/$VIVADO_VERSION/settings64.sh
 . $HOME/opt/oss-cad-suite/environment
