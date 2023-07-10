@@ -1,5 +1,0 @@
-SBY 21:43:47 [test_basic] Removing directory '/home/john/Documents/git/riscv_proc/src/test_basic'.
-SBY 21:43:47 [test_basic] Copy '/home/john/Documents/git/riscv_proc/src/full_adder.v' to '/home/john/Documents/git/riscv_proc/src/test_basic/src/full_adder.v'.
-SBY 21:43:47 [test_basic] Copy '/home/john/Documents/git/riscv_proc/src/ripple_carry_adder.v' to '/home/john/Documents/git/riscv_proc/src/test_basic/src/ripple_carry_adder.v'.
-SBY 21:43:47 [test_basic] Copy '/home/john/Documents/git/riscv_proc/src/register_file.v' to '/home/john/Documents/git/riscv_proc/src/test_basic/src/register_file.v'.
-SBY 21:43:47 [test_basic] Copy '/home/john/Documents/git/riscv_proc/src/processor.v' to '/home/john/Documents/git/riscv_proc/src/test_basic/src/processor.v'.
