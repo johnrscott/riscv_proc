@@ -30,6 +30,13 @@ cu -s 115200 -l /dev/ttyUSB1
 Type `~.` to exit `cu`.
 
 
+## FT2232 Behaviour 
+
+The following information was checked by looking at an oscilloscope of the TXD output from the FT2232 chip (`rx_debug`) on an oscilloscope. 
+
+When running `cu -s 115200 -l /dev/ttyUSB1`, the baud is 115200 bits per second, meaning each bit is 8.68us. As a result, 8 bits takes 69.4us and 9 bits takes 78.2us. The measured time of the byte transmission on the oscilloscope is 78.4us, so 9 bits are transmitted. The transmission begins with a start bit, which is low for one bit period. Then the next 8 bytes are the data; the bit order is least-significant bit first  (verified using `@`, code 0x40, which has a single `1` towards the end of the transmission). There are no stop bits.
+
+
 ## Debugging FPGA programming problems
 
 If you get the following message when attempting to connect to the FPGA board:
