@@ -1,5 +1,5 @@
 module uart_tx_datapath
-  #(word_size = 8,
+  #(parameter word_size = 8,
     size_bit_count = 3,
     // 9-bit all-ones
     all_ones = {(word_size + 1)(1'b1)})
