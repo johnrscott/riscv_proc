@@ -1,8 +1,7 @@
 module uart_tx_datapath
   #(parameter word_size = 8,
     size_bit_count = 3,
-    // 9-bit all-ones
-    all_ones = {(word_size + 1)(1'b1)})
+    all_ones = 9'b1_1111_1111)
    (output serial_out, bc_lt_bcmax,
     input [word_size-1:0] data_bus,
     input 		  load_xmt_datareg,
@@ -11,7 +10,7 @@ module uart_tx_datapath
 			  shift,
 			  clear, 
 			  clk,
-			  r st_ b);
+			  rst_b);
 
    // The data register is word_size bits long and contains
    // the data to be sent out on UART  

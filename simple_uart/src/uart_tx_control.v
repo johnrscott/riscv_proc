@@ -1,12 +1,11 @@
 module uart_tx_control
   #(parameter one_hot_count = 3, state_count = one_hot_count, size_bit_count = 3,
-    idle = 3'b001, waiting = 3'b010, sending = 3'b100,
-    all_ones = {(word_size + 1)(1'b1)})
+    idle = 3'b001, waiting = 3'b010, sending = 3'b100, all_ones = 9'b1_1111_1111)
    (output reg load_xmt_datareg_out, load_xmt_shiftreg, start, shift, clear,
     input load_xmt_datareg, byte_ready, t_byte, bc_lt_bcmax, clk, rst_b);
    
-   reg [start_count-1:0] state, next_state;
-
+   reg [state_count-1:0] state, next_state;
+   
    // The control path consists of two parts; a combinational
    // logic part that computes the outputs and the next state
    // (this behaviour) and an edge sensitive behaviour (the one
@@ -25,7 +24,7 @@ module uart_tx_control
 	     load_xmt_datareg_out = 1;
 	     next_state = idle;
 	  end
-	  else if (byte_read == 1'b1) begin
+	  else if (byte_ready == 1'b1) begin
 	     load_xmt_shiftreg = 1;
 	     next_state = waiting;
 	  end

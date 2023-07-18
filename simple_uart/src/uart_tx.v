@@ -9,7 +9,7 @@ module uart_tx #(parameter word_size = 8)
 		      .shift(shift),
 		      .clear(clear),
 		      .load_xmt_datareg(load_xmt_datareg),
-		      .byte_read(byte_read),
+		      .byte_ready(byte_ready),
 		      .t_byte(t_byte),
 		      .bc_lt_bcmax(bc_lt_bcmax),
 		      .clk(clk),
@@ -24,6 +24,6 @@ module uart_tx #(parameter word_size = 8)
 		       .shift(shift),
 		       .clear(clear),
 		       .clk(clk),
-		       .rst_b(rst_b))
+		       .rst_b(rst_b));
 
 endmodule
