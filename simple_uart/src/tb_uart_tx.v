@@ -7,7 +7,7 @@ module tb_uart_tx();
    localparam half_cycle = 10;
    localparam period = 20;
 
-   reg 	     clk, rst_b;
+   reg 	     clk, rst_b, load_xmt_datareg, byte_ready, t_byte;
      
    uart_tx uut(.serial_out(serial_out),
 	       .data_bus(data_bus),
@@ -20,7 +20,7 @@ module tb_uart_tx();
    initial begin: clock_loop
       clk = 0;
       rst_b = 0;
-      data_bus = "a";
+      data_bus = 'ha7;
       forever begin
 	 #half_cycle clk = 1;
 	 #half_cycle clk = 0;
@@ -32,6 +32,26 @@ module tb_uart_tx();
       #period;
       #period;
       rst_b = 1;
+
+      // Load data from the data bus to the internal
+      // transmit datareg
+      #period;
+      load_xmt_datareg = 1;
+      #period;
+      load_xmt_datareg = 0;
+
+      // Load the byte into the internal shift register
+      #period;
+      byte_ready = 1;
+      #period;
+      byte_ready = 0;      
+
+      // Start transmission
+      #period;
+      t_byte = 1;
+      #period;
+      t_byte = 0;      
+
       
       // pc = 0;
       // #period;

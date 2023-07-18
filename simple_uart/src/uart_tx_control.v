@@ -33,6 +33,12 @@ module uart_tx_control
 	     start = 1;
 	     next_state = sending;
 	  end
+	  else next_state = waiting;
+	sending:
+	  if (bc_lt_bcmax) begin
+	     shift = 1;
+	     next_state = sending;
+	  end
 	  else begin
 	     clear = 1;
 	     next_state = idle;
