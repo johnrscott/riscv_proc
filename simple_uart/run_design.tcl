@@ -1,11 +1,16 @@
 set output_dir ./output
 file mkdir $output_dir
 
+create_project -in_memory -part xc7a35ticsg324-1L
+
 read_verilog [ glob ./src/*.v ]
-
 read_xdc ./src/constraints.xdc
+read_ip ./.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 
-synth_design -top debug_uart -part xc7a35ticsg324-1L
+generate_target all [get_ips]
+
+#synth_design -top debug_uart -part xc7a35ticsg324-1L
+synth_design -top debug_uart
 
 # write_checkpoint -force $output_dir/post_synth
 # report_timing_summary -file $output_dir/post_synth_timing_summary.rpt
