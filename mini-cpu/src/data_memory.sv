@@ -22,7 +22,7 @@ module data_memory
 
    // Initial value of the data memory. Note array size must
    // be the same as the actual memory
-   const logic [63:0] initial_data[128] = '{1, 2};
+   const logic [63:0] initial_data[128] = '{0:1, 1:2, default:0};
 
    initial begin: load_data_memory
       dm <= initial_data;
