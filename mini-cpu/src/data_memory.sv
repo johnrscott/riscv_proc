@@ -19,5 +19,13 @@ module data_memory
       else if (write_en)
 	dm[word_address] <= write_data;
    end
+
+   // Initial value of the data memory. Note array size must
+   // be the same as the actual memory
+   const logic [63:0] initial_data[128] = '{1, 2};
+
+   initial begin: load_data_memory
+      dm <= initial_data;
+   end
    
 endmodule
