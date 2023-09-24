@@ -6,14 +6,13 @@ create_project -in_memory -part xc7a35ticsg324-1L
 # One-time only, create the clock by running the line below
 #source create_clock.tcl
 
-read_verilog [ glob ./src/*.v ]
+read_verilog -sv [ glob ./src/*.sv ]
 read_xdc ./src/constraints.xdc
 read_ip ./.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 
-generate_target all [get_ips]
+generate_target -verbose all [get_ips]
 
-#synth_design -top debug_uart -part xc7a35ticsg324-1L
-synth_design -top debug_uart
+synth_design -top top
 
 # write_checkpoint -force $output_dir/post_synth
 # report_timing_summary -file $output_dir/post_synth_timing_summary.rpt

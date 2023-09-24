@@ -1,7 +1,6 @@
-module example(input clk, output led);
+module example(input clk, output reg led);
 
    reg [31:0] count;
-   reg led;
 
    initial begin
       count <= 0;
@@ -9,7 +8,7 @@ module example(input clk, output led);
    end
    
    always @(posedge clk) begin
-      if count < 20
+      if (count < 20)
 	count <= count + 1;
       else begin
 	 count <= 0;
