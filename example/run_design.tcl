@@ -11,6 +11,7 @@ read_verilog -sv [ glob ./src/*.sv ]
 read_xdc ./src/constraints.xdc
 read_ip ./.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 
+# Output products are put in .gen folder.
 generate_target -verbose all [get_ips]
 
 synth_design -verbose -top top
