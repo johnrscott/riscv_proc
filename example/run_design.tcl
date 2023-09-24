@@ -1,7 +1,8 @@
 set output_dir ./output
 file mkdir $output_dir
 
-create_project -in_memory -part xc7a35ticsg324-1L
+#create_project -in_memory -part xc7a35ticsg324-1L
+set_part xc7a35ticsg324-1L
 
 # One-time only, create the clock by running the line below
 #source create_clock.tcl
@@ -12,7 +13,7 @@ read_ip ./.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 
 generate_target -verbose all [get_ips]
 
-synth_design -top top
+synth_design -verbose -top top
 
 # write_checkpoint -force $output_dir/post_synth
 # report_timing_summary -file $output_dir/post_synth_timing_summary.rpt
