@@ -9,3 +9,4 @@ set_property PACKAGE_PIN D9 [get_ports {rstn}]
 set_property PACKAGE_PIN C9 [get_ports {clk}]
 set_property PACKAGE_PIN H5 [get_ports {main_alu_zero}]
 
+#set_property mark_debug true [get_nets -hier {clk}]]

@@ -10,11 +10,29 @@ synth_design -rtl -top processor -part xc7a35ticsg324-1L
 # Synthesize design
 synth_design -top processor -part xc7a35ticsg324-1L
 
+#Create the debug core 
+create_debug_core u_ila_0 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+
+#connect the probe ports in the debug core to the signals being probed in the design
+set_property port_width 1 [get_debug_ports u_ila_0/pc]
+connect_debug_port u_ila_0/clk [get_nets {pc}]
+
 opt_design
 place_design
 phys_opt_design
 route_design
+
 write_bitstream -force $output_dir/bft.bit
+
+write_debug_probes probes.ltx
 
 # Connect to the Digilent Cable on localhost:3121
 open_hw_manager
